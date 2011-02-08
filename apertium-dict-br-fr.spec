@@ -2,12 +2,12 @@ Summary:	Breton-French language pair for Apertium
 Summary(pl.UTF-8):	Para języków bretoński-francuski dla Apertium
 %define	lpair	br-fr
 Name:		apertium-dict-%{lpair}
-Version:	0.3.0
+Version:	0.4.0
 Release:	1
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://downloads.sourceforge.net/apertium/apertium-%{lpair}-%{version}.tar.gz
-# Source0-md5:	c0033babfaed14a7c3bcb18efe0b8e8c
+# Source0-md5:	6a0b4f0fcdcd0a7a68d683f557e7bc52
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.apertium.org/
 BuildRequires:	apertium-devel >= 3.2.0
