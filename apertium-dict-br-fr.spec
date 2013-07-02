@@ -2,13 +2,12 @@ Summary:	Breton-French language pair for Apertium
 Summary(pl.UTF-8):	Para języków bretoński-francuski dla Apertium
 %define	lpair	br-fr
 Name:		apertium-dict-%{lpair}
-Version:	0.4.0
+Version:	0.5.0
 Release:	1
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://downloads.sourceforge.net/apertium/apertium-%{lpair}-%{version}.tar.gz
-# Source0-md5:	6a0b4f0fcdcd0a7a68d683f557e7bc52
-Patch0:		%{name}-DESTDIR.patch
+# Source0-md5:	65992f979f243e1f6a0f0b850b5a8a10
 URL:		http://www.apertium.org/
 BuildRequires:	apertium-devel >= 3.2.0
 BuildRequires:	autoconf >= 2.52
@@ -18,6 +17,8 @@ BuildRequires:	lttoolbox >= 3.2.0
 BuildRequires:	vislcg3 >= 0.9.7.5129
 BuildRequires:	pkgconfig
 Requires:	apertium >= 3.2.0
+Requires:	lttoolbox >= 3.2.0
+Requires:	vislcg3 >= 0.9.7.5129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,7 +33,6 @@ oznaczania części mowy w obu językach.
 
 %prep
 %setup -q -n apertium-%{lpair}-%{version}
-%patch0 -p1
 
 %build
 %{__aclocal}
@@ -45,13 +45,9 @@ oznaczania części mowy w obu językach.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/apertium/modes
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-# not needed here (see modes subdir) and contain wrong (builddir) paths
-%{__rm} $RPM_BUILD_ROOT%{_datadir}/apertium/apertium-%{lpair}/*.mode
 
 %clean
 rm -rf $RPM_BUILD_ROOT
